@@ -33,7 +33,7 @@ const Content = (props) => {
       <Sidebar.Pusher>
         <Segment basic>
           <Header as="h3">Application Content</Header>
-          {props.scene()}
+          {props.scene}
         </Segment>
       </Sidebar.Pusher>
     </Sidebar.Pushable>
