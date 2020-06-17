@@ -3,7 +3,7 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 function Model() {
   const [model, setModel] = useState();
-  console.log(model);
+  console.log(model.scene.toJson());
   useEffect(() => {
     new GLTFLoader().load(
       "/TOOTHPASTE_Placeholder_TrueScale_v1.gltf",
@@ -12,7 +12,11 @@ function Model() {
   }, []);
 
   return model ? (
-    <primitive object={model.scene} position={[0, 0, 0]} scale={[25, 25, 25]} />
+    <primitive
+      object={model.scene.toJson()}
+      position={[0, 0, 0]}
+      scale={[25, 25, 25]}
+    />
   ) : null;
 }
 
