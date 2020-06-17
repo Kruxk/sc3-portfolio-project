@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import { Header, Icon, Image, Menu, Segment, Sidebar } from "semantic-ui-react";
-import Scene from "./Scene";
+import { Header, Icon, Menu, Segment, Sidebar } from "semantic-ui-react";
 
-const SidebarExampleSidebar = () => {
+const Content = (props) => {
   const [visible, setVisible] = useState(true);
 
   return (
@@ -34,11 +33,11 @@ const SidebarExampleSidebar = () => {
       <Sidebar.Pusher>
         <Segment basic>
           <Header as="h3">Application Content</Header>
-          <Scene />
+          {props.scene()}
         </Segment>
       </Sidebar.Pusher>
     </Sidebar.Pushable>
   );
 };
 
-export default SidebarExampleSidebar;
+export default Content;

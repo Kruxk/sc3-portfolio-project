@@ -3,12 +3,17 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 function Model() {
   const [model, setModel] = useState();
-
+  console.log(model);
   useEffect(() => {
-    new GLTFLoader().load("/Background_Object_v1.gltf", setModel);
+    new GLTFLoader().load(
+      "/TOOTHPASTE_Placeholder_TrueScale_v1.gltf",
+      setModel
+    );
   }, []);
 
-  return model ? <primitive object={model.scene} position={[0, 0, 0]} /> : null;
+  return model ? (
+    <primitive object={model.scene} position={[0, 0, 0]} scale={[25, 25, 25]} />
+  ) : null;
 }
 
 export default Model;
