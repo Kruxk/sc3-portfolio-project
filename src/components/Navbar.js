@@ -2,7 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
-  const style = { fontSize: "1.35em", padding: "0.75em 2em", color: "#4fb8a6" };
+  const style = {
+    fontSize: "1.35em",
+    padding: "0.75em 2em",
+    color: "#4fb8a6",
+    fontFamily: "Lato, sans-serif",
+  };
   const activeStyle = {
     fontWeight: "bold",
     backgroundColor: "#E6E6E6",
@@ -18,16 +23,20 @@ function Navbar() {
         marginRight: "2.5em",
       }}
     >
-      <h1
+      <div
         style={{
           position: "absolute",
-          left: "0.2em",
-          top: "0.38em",
-          fontSize: "2em",
+          left: "2.9em",
+          top: "0.5em",
+          width: "5em",
         }}
       >
-        LOGO
-      </h1>
+        <img
+          style={{ width: "100%" }}
+          src="/RETAILBUCKET_Logo_Green_v1.png"
+          alt="logo"
+        />
+      </div>
 
       <NavLink to="/" exact={true} style={style} activeStyle={activeStyle}>
         Home
