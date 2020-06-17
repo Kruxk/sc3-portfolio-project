@@ -2,19 +2,16 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Navbar() {
-  const style = { fontSize: "1.35em", padding: "0.75em 2em" };
+  const style = { fontSize: "1.35em", padding: "0.75em 2em", color: "#4fb8a6" };
   const activeStyle = {
     fontWeight: "bold",
-    textDecoration: "underline",
-    textDecorationLine: "overline",
-    textDecorationColor: "#DBDBDB",
-    backgroundColor: "#DBDBDB",
+    backgroundColor: "#E6E6E6",
   };
 
   return (
     <div
       style={{
-        borderBottom: "0.2em solid #4183C4",
+        // borderBottom: "0.2em solid #4183C4",
         display: "flex",
         justifyContent: "space-around",
         marginLeft: "6.5em",

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Header, Icon, Menu, Segment, Sidebar } from "semantic-ui-react";
+import {
+  Header,
+  Icon,
+  Menu,
+  Segment,
+  Sidebar,
+  Button,
+} from "semantic-ui-react";
 
 const Content = (props) => {
   const [visible, setVisible] = useState(true);
@@ -32,7 +39,22 @@ const Content = (props) => {
 
       <Sidebar.Pusher>
         <Segment basic>
-          <Header as="h3">Application Content</Header>
+          <Header as="h3" style={{ display: "inline-block" }}>
+            Application Content
+          </Header>
+          <div
+            style={{
+              display: "inline",
+              position: "absolute",
+              right: "1em",
+              top: "0.5em",
+            }}
+          >
+            <Button circular onClick={() => setVisible(!visible)}>
+              Options
+            </Button>
+            <Button circular>Render</Button>
+          </div>
           {props.scene}
         </Segment>
       </Sidebar.Pusher>
