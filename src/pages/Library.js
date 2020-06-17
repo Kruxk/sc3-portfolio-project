@@ -1,7 +1,8 @@
 import React from "react";
+import Content from "../components/Content";
 
 function Library() {
-  return <div>LIBRARYTEST</div>;
+  return <Content />;
 }
 
 export default Library;
