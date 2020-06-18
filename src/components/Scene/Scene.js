@@ -3,17 +3,23 @@ import { Canvas } from "react-three-fiber";
 import Model from "./Model";
 import * as THREE from "three";
 import "./style.css";
+import { useSelector } from "react-redux";
+import { selectLoadedModels } from "../../store/models/selectors";
 
 function Scene() {
+  const loadedModels = useSelector(selectLoadedModels);
+  console.log(loadedModels);
   return (
     <Canvas
-      camera={{ position: [0, 10, 15] }}
+      camera={{ position: [0, 0.4, 0.5] }}
       onCreated={({ scene }) => {
-        scene.background = new THREE.Color("#373737");
+        scene.background = new THREE.Color("#e6e6e6");
       }}
     >
       <ambientLight />
-      <Model />
+      {loadedModels.map((model) => (
+        <Model scene={model} position={[0, 0, 0]} />
+      ))}
     </Canvas>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import Content from "../components/Content";
-import Scene from "../components/Scene/Scene";
+import CategoryCards from "../components/CategoryCards";
 
 function Library() {
-  return <Content scene={<Scene />} />;
+  return <Content content={<CategoryCards />} />;
 }
 
 export default Library;
