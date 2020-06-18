@@ -1,3 +1,5 @@
+import { LOADED_MODELS } from "./actions";
+
 const initialState = {
   availableModels: [
     {
@@ -18,6 +20,9 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case LOADED_MODELS:
+      // console.log(payload);
+      return { ...state, loadedModels: [...state.loadedModels, payload] };
     default:
       return state;
   }
