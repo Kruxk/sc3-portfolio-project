@@ -2,7 +2,7 @@ import React from "react";
 import { Card, Button } from "semantic-ui-react";
 
 const CardExampleCard = (props) => (
-  <Card>
+  <Card style={{ margin: "0 1em" }}>
     <div
       style={{
         height: "22em",

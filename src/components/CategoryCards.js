@@ -1,10 +1,16 @@
 import React from "react";
 import Categorycard from "./Categorycard";
+import { useSelector } from "react-redux";
+import { selectAvailModels } from "../store/models/selectors";
 
 function CategoryCards() {
+  const availableModels = useSelector(selectAvailModels);
+  console.log(availableModels);
   return (
-    <div>
-      <Categorycard />
+    <div style={{ display: "flex" }}>
+      {availableModels.map((model) => (
+        <Categorycard key={model.id} img={model.thumbnail} name={model.name} />
+      ))}
     </div>
   );
 }

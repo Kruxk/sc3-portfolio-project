@@ -7,7 +7,7 @@ const initialState = {
       name: "Prodent Toothpaste",
       category: "Health",
       modelUrl: "/TANDPASTA-PRODENT-ROUNDED-001_v1.glb",
-      thumbnail: "/TANDPASTA-PRODENT-ID001_THUMBNAIL-library.png",
+      thumbnail: "models/TANDPASTA-PRODENT-ID001_THUMBNAIL-library.png",
     },
     {
       id: 2,
