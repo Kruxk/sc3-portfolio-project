@@ -44,7 +44,7 @@ const Content = (props) => {
             </Button>
             <Button circular>Render</Button>
           </div>
-          {props.scene}
+          {props.content}
         </Segment>
       </Sidebar.Pusher>
     </Sidebar.Pushable>

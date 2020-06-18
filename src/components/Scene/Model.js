@@ -3,8 +3,8 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 function Model() {
   const [model, setModel] = useState();
-  console.log(model);
-  if (model) model.scene.visible = true;
+  // console.log(model);
+  // if (model) model.scene.visible = true;
   useEffect(() => {
     new GLTFLoader().load(
       "/models/TANDPASTA-PRODENT-ROUNDED-001_v1.glb",

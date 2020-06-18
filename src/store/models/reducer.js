@@ -4,12 +4,14 @@ const initialState = {
   availableModels: [
     {
       id: 1,
+      name: "Prodent Toothpaste",
       category: "Health",
       modelUrl: "/TANDPASTA-PRODENT-ROUNDED-001_v1.glb",
       thumbnail: "/TANDPASTA-PRODENT-ID001_THUMBNAIL-library.png",
     },
     {
       id: 2,
+      name: "Placeholder Toothpaste",
       category: "Health",
       modelUrl: "/TOOTHPASTE_Placeholder_TrueScale_v1.gltf",
       thumbnail: "N/A",
