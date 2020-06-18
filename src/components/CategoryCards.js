@@ -9,7 +9,12 @@ function CategoryCards() {
   return (
     <div style={{ display: "flex" }}>
       {availableModels.map((model) => (
-        <Categorycard key={model.id} img={model.thumbnail} name={model.name} />
+        <Categorycard
+          url={model.modelUrl}
+          key={model.id}
+          img={model.thumbnail}
+          name={model.name}
+        />
       ))}
     </div>
   );
