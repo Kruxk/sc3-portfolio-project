@@ -1,13 +1,12 @@
 import React, { useMemo } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import * as THREE from "three";
 import { useLoader, useThree } from "react-three-fiber";
 import { useDrag } from "react-use-gesture";
 import { useSpring, a } from "react-spring/three";
 
 function Model({ url, position, ...props }) {
   const { nodes, materials } = useLoader(GLTFLoader, url);
-  const { size, viewport, scene } = useThree();
+  const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
   const [spring, set] = useSpring(() => ({
     position: [...position],

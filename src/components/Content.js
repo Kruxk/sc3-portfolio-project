@@ -16,9 +16,9 @@ const Content = (props) => {
         visible={visible}
         width="thin"
       >
-        <Menu.Item as="a">
-          <Icon name="home" />
-          Home
+        <Menu.Item as="a" onClick={(e) => console.log("hi from camera")}>
+          <Icon name="camera" />
+          Camera
         </Menu.Item>
         <Menu.Item as="a">
           <Icon name="gamepad" />
