@@ -10,7 +10,7 @@ function Model({ url, position, ...props }) {
   const aspect = size.width / viewport.width;
   const [spring, set] = useSpring(() => ({
     position: [...position],
-    config: { mass: 3, friction: 40, tension: 800 },
+    config: { mass: 3, friction: 30, tension: 650 },
   }));
   const bind = useDrag(
     ({ offset: [x, y], vxvy: [vx, vy], down, ...props }) =>
