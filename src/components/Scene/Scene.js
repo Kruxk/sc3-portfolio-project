@@ -25,7 +25,7 @@ function Scene() {
               key={Math.floor(Math.random() * 100000)}
               url={model.obj.url}
               mesh={model.obj.mesh}
-              position={[i / 4, 0, 0]}
+              position={[i / 10, 0, 0]}
             />
           );
         })}

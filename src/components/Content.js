@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Icon, Menu, Segment, Sidebar, Button } from "semantic-ui-react";
 
 const Content = (props) => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   return (
     <Sidebar.Pushable as={Segment}>
