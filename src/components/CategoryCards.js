@@ -5,16 +5,11 @@ import { selectAvailModels } from "../store/models/selectors";
 
 function CategoryCards() {
   const availableModels = useSelector(selectAvailModels);
-  console.log(availableModels);
+  // console.log(availableModels);
   return (
     <div style={{ display: "flex" }}>
       {availableModels.map((model) => (
-        <Categorycard
-          url={model.modelUrl}
-          key={model.id}
-          img={model.thumbnail}
-          name={model.name}
-        />
+        <Categorycard key={model.id} model={{ ...model }} />
       ))}
     </div>
   );

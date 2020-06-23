@@ -1,25 +1,35 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Canvas } from "react-three-fiber";
-import Model from "./Model";
 import * as THREE from "three";
 import "./style.css";
 import { useSelector } from "react-redux";
+import Model from "./Model";
+import Loading from "./Loading";
 import { selectLoadedModels } from "../../store/models/selectors";
 
 function Scene() {
   const loadedModels = useSelector(selectLoadedModels);
-  console.log(loadedModels);
+
   return (
     <Canvas
-      camera={{ position: [0, 0.4, 0.5] }}
+      camera={{ position: [0, 0.5, 1] }}
       onCreated={({ scene }) => {
         scene.background = new THREE.Color("#e6e6e6");
       }}
     >
       <ambientLight />
-      {loadedModels.map((model) => (
-        <Model scene={model} position={[0, 0, 0]} />
-      ))}
+      <Suspense fallback={<Loading />}>
+        {loadedModels.map((model, i) => {
+          return (
+            <Model
+              key={Math.floor(Math.random() * 100000)}
+              url={model.obj.url}
+              mesh={model.obj.mesh}
+              position={[i / 4, 0, 0]}
+            />
+          );
+        })}
+      </Suspense>
     </Canvas>
   );
 }

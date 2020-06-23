@@ -1,18 +1,11 @@
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-
 export const LOADED_MODELS = "LOADED_MODELS";
+export const EDIT_POSITION = "EDIT_POSITION";
 
-const loadModelsSucces = (model) => {
+export const loadModels = (model) => {
   //   console.log(model);
   return { type: LOADED_MODELS, payload: model };
 };
 
-export const loadModels = (modelUrl) => async (dispatch, getState) => {
-  try {
-    await new GLTFLoader().load(modelUrl, (model) =>
-      dispatch(loadModelsSucces(model.scene))
-    );
-  } catch (error) {
-    console.log(error);
-  }
+export const editPosition = (id, position) => {
+  return { type: EDIT_POSITION, payload: { id, position } };
 };
