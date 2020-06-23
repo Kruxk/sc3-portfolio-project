@@ -43,8 +43,8 @@ function Model({ url, position, ...props }) {
     return bind;
   }, [bind]);
 
-  console.log({ bind });
-  console.log(scene);
+  // console.log({ bind });
+  // console.log(scene);
   return model ? (
     <a.group
       //position={model.position}
