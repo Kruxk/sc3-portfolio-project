@@ -42,6 +42,7 @@ const Content = (props) => {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
+              style={{ background: "#292A2A", color: "#E0E1E2" }}
               circular
               onClick={(e) =>
                 dispatch(
@@ -53,6 +54,10 @@ const Content = (props) => {
             </Button>
             <br />
             <Button
+              style={{
+                background: "#292A2A",
+                color: "#E0E1E2",
+              }}
               circular
               onClick={(e) =>
                 dispatch(
@@ -60,7 +65,7 @@ const Content = (props) => {
                 )
               }
             >
-              <b>-</b>
+              -
             </Button>
           </div>
         </Menu.Item>

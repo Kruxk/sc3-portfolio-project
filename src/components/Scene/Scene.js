@@ -8,6 +8,8 @@ import Loading from "./Loading";
 import { selectLoadedModels } from "../../store/models/selectors";
 import Camera from "./Camera";
 import { selectCamera } from "../../store/scene/selectors";
+import CameraControls from "./CameraControls";
+import Background from "./Background";
 
 function Scene() {
   const loadedModels = useSelector(selectLoadedModels);
@@ -21,8 +23,12 @@ function Scene() {
       }}
     >
       <ambientLight />
+      <pointLight position={[0, 5, 0]} />
+
+      <CameraControls />
+      <Camera position={[...camera.position]} fov={90} />
       <Suspense fallback={<Loading />}>
-        <Camera position={[...camera.position]} fov={90} />
+        <Background />
         {loadedModels.map((model, i) => {
           return (
             <Model

@@ -6,17 +6,17 @@ import { useSpring, a } from "react-spring/three";
 
 function Model({ url, position, ...props }) {
   const { nodes, materials } = useLoader(GLTFLoader, url);
-  const { size, viewport } = useThree();
+  const { size, viewport, gl } = useThree();
   const aspect = size.width / viewport.width;
   const [spring, set] = useSpring(() => ({
     position: [...position],
-    config: { mass: 3, friction: 30, tension: 650 },
+    config: { mass: 3, friction: 40, tension: 650 },
   }));
   const bind = useDrag(
     ({ offset: [x, y], vxvy: [vx, vy], down, ...props }) =>
       set({
-        position: [x / aspect, -y / aspect, 0],
-        rotation: [y / aspect, x / aspect, 0],
+        position: [x / aspect, 0, y / aspect],
+        // rotation: [y / aspect, x / aspect, 0],
       }),
     { eventOptions: { pointer: true } }
   );
@@ -43,7 +43,7 @@ function Model({ url, position, ...props }) {
   }, [bind]);
 
   // console.log({ bind });
-  // console.log(scene);
+  console.log(newSpring);
   return model ? (
     <a.group
       //position={model.position}

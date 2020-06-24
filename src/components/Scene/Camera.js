@@ -13,7 +13,7 @@ export default function Camera(props) {
     <perspectiveCamera
       ref={ref}
       {...props}
-      //aspect={size.width / viewport.width}
+      aspect={size.width / viewport.width}
     />
   );
 }
