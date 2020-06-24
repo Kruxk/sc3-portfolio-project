@@ -13,9 +13,9 @@ import Background from "./Background";
 
 function Scene() {
   const loadedModels = useSelector(selectLoadedModels);
-  const camera = useSelector(selectCamera);
+  // const camera = useSelector(selectCamera);
 
-  console.log(camera);
+  // console.log(camera);
   return (
     <Canvas
       onCreated={({ scene }) => {
@@ -26,7 +26,7 @@ function Scene() {
       <pointLight position={[0, 5, 0]} />
 
       <CameraControls />
-      <Camera position={[...camera.position]} fov={90} />
+      <Camera position={[0, 0.8, 1]} fov={90} />
       <Suspense fallback={<Loading />}>
         <Background />
         {loadedModels.map((model, i) => {

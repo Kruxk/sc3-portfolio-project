@@ -6,10 +6,10 @@ import { setCamera } from "../store/scene/actions";
 
 const Content = (props) => {
   const [visible, setVisible] = useState(false);
-  const { position } = useSelector(selectCamera);
-  const dispatch = useDispatch();
+  // const { position } = useSelector(selectCamera);
+  // const dispatch = useDispatch();
 
-  console.log(position);
+  // console.log(position);
   return (
     <Sidebar.Pushable as={Segment}>
       <Sidebar
@@ -40,7 +40,7 @@ const Content = (props) => {
             <Icon name={props.but1.toLowerCase()} />
             {props.but1}
           </div>
-          <div style={{ display: "flex", flexDirection: "column" }}>
+          {/* <div style={{ display: "flex", flexDirection: "column" }}>
             <Button
               style={{ background: "#292A2A", color: "#E0E1E2" }}
               circular
@@ -67,7 +67,7 @@ const Content = (props) => {
             >
               -
             </Button>
-          </div>
+          </div> */}
         </Menu.Item>
         <Menu.Item as="a">
           <Icon name="gamepad" />

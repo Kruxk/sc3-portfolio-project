@@ -13,13 +13,14 @@ function CameraControls() {
 
   useFrame((state) => {
     controls.current.update();
-    // console.log(controls.current.mouseButtons);
   });
 
   return (
     <orbitControls
       ref={controls}
       maxPolarAngle={Math.PI / 2.8}
+      maxDistance={19.589840195647547}
+      minDistance={0.5740103294635633}
       enablePan={false}
       maxAzimuthAngle={0}
       minAzimuthAngle={0}

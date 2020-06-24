@@ -10,14 +10,18 @@ function Model({ url, position, ...props }) {
   const aspect = size.width / viewport.width;
   const [spring, set] = useSpring(() => ({
     position: [...position],
+    rotation: [0, 0, 0],
     config: { mass: 3, friction: 40, tension: 650 },
   }));
   const bind = useDrag(
-    ({ offset: [x, y], vxvy: [vx, vy], down, ...props }) =>
-      set({
-        position: [x / aspect, 0, y / aspect],
-        // rotation: [y / aspect, x / aspect, 0],
-      }),
+    ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+      !altKey
+        ? set({
+            position: [x / aspect, 0, y / aspect],
+          })
+        : set({
+            rotation: [y / aspect, x / aspect, 0],
+          }),
     { eventOptions: { pointer: true } }
   );
 
