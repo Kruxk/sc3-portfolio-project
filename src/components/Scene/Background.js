@@ -9,7 +9,7 @@ export default function Background() {
   );
   console.log(nodes, materials);
   return (
-    <group position={[0, 20, 0]}>
+    <group position={[0, 0, 0]}>
       <mesh
         geometry={nodes.Circle.geometry}
         material={materials.DiffuseDarkGrey}

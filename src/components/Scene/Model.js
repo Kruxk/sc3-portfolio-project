@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useLoader, useThree } from "react-three-fiber";
-import { useDrag } from "react-use-gesture";
+import { useDrag, useGesture } from "react-use-gesture";
 import { useSpring, a } from "react-spring/three";
 
 function Model({ url, position, ...props }) {
@@ -24,6 +24,20 @@ function Model({ url, position, ...props }) {
           }),
     { eventOptions: { pointer: true } }
   );
+  // const bind = useGesture(
+  //   {
+  //     onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+  //       set({
+  //         position: [x / aspect, 0, y / aspect],
+  //       }),
+  //     // onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+  //     //   altKey &&
+  //     //   set({
+  //     //     rotation: [y / aspect, x / aspect, 0],
+  //     //   }),
+  //   },
+  //   { eventOptions: { pointer: true } }
+  // );
 
   const model = useMemo(() => {
     if (nodes === undefined || materials === undefined) {

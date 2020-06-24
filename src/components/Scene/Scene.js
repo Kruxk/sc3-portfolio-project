@@ -18,15 +18,16 @@ function Scene() {
   // console.log(camera);
   return (
     <Canvas
-      onCreated={({ scene }) => {
+      onCreated={({ scene, gl }) => {
         scene.background = new THREE.Color("#e6e6e6");
+        gl: new THREE.WebGLRenderer({ alpha: true });
       }}
     >
-      <ambientLight />
-      <pointLight position={[0, 5, 0]} />
+      <ambientLight intensity={1.14} />
+      {/* <pointLight position={[0, 5, 0]} /> */}
 
       <CameraControls />
-      <Camera position={[0, 0.8, 1]} fov={90} />
+      <Camera position={[0, 0.04928419090198964, 0.852950845625365]} fov={50} />
       <Suspense fallback={<Loading />}>
         <Background />
         {loadedModels.map((model, i) => {
