@@ -6,19 +6,30 @@ import { useSelector } from "react-redux";
 import Model from "./Model";
 import Loading from "./Loading";
 import { selectLoadedModels } from "../../store/models/selectors";
+import Camera from "./Camera";
+import { selectCamera } from "../../store/scene/selectors";
+import CameraControls from "./CameraControls";
+import Background from "./Background";
 
 function Scene() {
   const loadedModels = useSelector(selectLoadedModels);
+  // const camera = useSelector(selectCamera);
 
+  // console.log(camera);
   return (
     <Canvas
-      camera={{ position: [0, 0.5, 1] }}
-      onCreated={({ scene }) => {
+      onCreated={({ scene, gl }) => {
         scene.background = new THREE.Color("#e6e6e6");
+        gl: new THREE.WebGLRenderer({ alpha: true });
       }}
     >
-      <ambientLight />
+      <ambientLight intensity={1.14} />
+      {/* <pointLight position={[0, 5, 0]} /> */}
+
+      <CameraControls />
+      <Camera position={[0, 0.04928419090198964, 0.852950845625365]} fov={50} />
       <Suspense fallback={<Loading />}>
+        <Background />
         {loadedModels.map((model, i) => {
           return (
             <Model

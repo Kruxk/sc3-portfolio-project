@@ -1,26 +1,43 @@
 import React, { useMemo } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import * as THREE from "three";
 import { useLoader, useThree } from "react-three-fiber";
-import { useDrag } from "react-use-gesture";
+import { useDrag, useGesture } from "react-use-gesture";
 import { useSpring, a } from "react-spring/three";
 
 function Model({ url, position, ...props }) {
   const { nodes, materials } = useLoader(GLTFLoader, url);
-  const { size, viewport, scene } = useThree();
+  const { size, viewport, gl } = useThree();
   const aspect = size.width / viewport.width;
   const [spring, set] = useSpring(() => ({
     position: [...position],
-    config: { mass: 3, friction: 40, tension: 800 },
+    rotation: [0, 0, 0],
+    config: { mass: 3, friction: 40, tension: 650 },
   }));
   const bind = useDrag(
-    ({ offset: [x, y], vxvy: [vx, vy], down, ...props }) =>
-      set({
-        position: [x / aspect, -y / aspect, 0],
-        rotation: [y / aspect, x / aspect, 0],
-      }),
+    ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+      !altKey
+        ? set({
+            position: [x / aspect, 0, y / aspect],
+          })
+        : set({
+            rotation: [y / aspect, x / aspect, 0],
+          }),
     { eventOptions: { pointer: true } }
   );
+  // const bind = useGesture(
+  //   {
+  //     onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+  //       set({
+  //         position: [x / aspect, 0, y / aspect],
+  //       }),
+  //     // onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+  //     //   altKey &&
+  //     //   set({
+  //     //     rotation: [y / aspect, x / aspect, 0],
+  //     //   }),
+  //   },
+  //   { eventOptions: { pointer: true } }
+  // );
 
   const model = useMemo(() => {
     if (nodes === undefined || materials === undefined) {
@@ -44,7 +61,7 @@ function Model({ url, position, ...props }) {
   }, [bind]);
 
   // console.log({ bind });
-  // console.log(scene);
+  console.log(newSpring);
   return model ? (
     <a.group
       //position={model.position}
