@@ -11,6 +11,8 @@ import CameraControls from "./CameraControls";
 import Background from "./Background";
 import { Environment } from "./Environment";
 import { selectActiveEnv } from "../../store/scene/selectors";
+import { HTML } from "drei";
+import { Loader } from "semantic-ui-react";
 
 function Scene() {
   const loadedModels = useSelector(selectLoadedModels);
@@ -32,7 +34,13 @@ function Scene() {
 
       <CameraControls />
       <Camera position={[0, 0.04928419090198964, 0.852950845625365]} fov={50} />
-      <Suspense fallback={<Loading />}>
+      <Suspense
+        fallback={
+          <HTML>
+            <div>Loading...</div>
+          </HTML>
+        }
+      >
         <Environment url={activeEnv} intensity={3} />
         <Background />
         {loadedModels.map((model, i) => {

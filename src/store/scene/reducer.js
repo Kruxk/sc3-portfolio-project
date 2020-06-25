@@ -1,3 +1,5 @@
+import { CHANGE_LIGHTS } from "./actions";
+
 const initialState = {
   environment: {
     all: [
@@ -13,6 +15,11 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CHANGE_LIGHTS:
+      return {
+        ...state,
+        environment: { ...state.environment, active: payload },
+      };
     default:
       return state;
   }

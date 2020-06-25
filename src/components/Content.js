@@ -1,8 +1,12 @@
 import React, { useState } from "react";
-import { Icon, Menu, Segment, Sidebar, Button } from "semantic-ui-react";
+import { Icon, Menu, Segment, Sidebar, Button, Radio } from "semantic-ui-react";
+import { useDispatch } from "react-redux";
+import { changeLight } from "../store/scene/actions";
 
 const Content = (props) => {
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
+
   return (
     <Sidebar.Pushable as={Segment}>
       <Sidebar
@@ -15,33 +19,35 @@ const Content = (props) => {
         visible={visible}
         width="thin"
       >
-        <Menu.Item
-          as="a"
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-            }}
-          >
-            <Icon name={props.but1.toLowerCase()} />
-            {props.but1}
-          </div>
-        </Menu.Item>
         <Menu.Item as="a">
+          <Icon name="lightning" />
+          Lighting
+          {props.lightning &&
+            props.lightning.map((preset, i) => {
+              return (
+                <Button
+                  style={{
+                    margin: "0.25em",
+                    background: "#2C2C2C",
+                    color: "white",
+                  }}
+                  circular
+                  onClick={(e) => dispatch(changeLight(preset))}
+                >
+                  Preset {i + 1}
+                </Button>
+              );
+            })}
+        </Menu.Item>
+
+        {/* <Menu.Item as="a">
           <Icon name="gamepad" />
           Games
         </Menu.Item>
         <Menu.Item as="a">
           <Icon name="camera" />
           Channels
-        </Menu.Item>
+        </Menu.Item> */}
       </Sidebar>
 
       <Sidebar.Pusher>
