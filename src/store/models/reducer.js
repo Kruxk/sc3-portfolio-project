@@ -1,4 +1,4 @@
-import { LOADED_MODELS } from "./actions";
+import { LOADED_MODELS, REMOVE_MODEL } from "./actions";
 
 const initialState = {
   availableModels: [
@@ -46,6 +46,13 @@ const initialState = {
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case REMOVE_MODEL: {
+      const newModels = state.loadedModels.filter(
+        (model, index) => index !== payload
+      );
+
+      return { ...state, loadedModels: [...newModels] };
+    }
     case LOADED_MODELS:
       return { ...state, loadedModels: [...state.loadedModels, payload] };
     default:

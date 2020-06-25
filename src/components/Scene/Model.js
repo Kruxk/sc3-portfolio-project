@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useLoader, useThree } from "react-three-fiber";
-import { useDrag, useGesture } from "react-use-gesture";
+import { useDrag } from "react-use-gesture";
 import { useSpring, a } from "react-spring/three";
 
 function Model({ url, position, ...props }) {
   const { nodes, materials } = useLoader(GLTFLoader, url);
-  const { size, viewport, gl } = useThree();
+  const { size, viewport } = useThree();
   const aspect = size.width / viewport.width;
   const [spring, set] = useSpring(() => ({
     position: [...position],
@@ -24,20 +24,6 @@ function Model({ url, position, ...props }) {
           }),
     { eventOptions: { pointer: true } }
   );
-  // const bind = useGesture(
-  //   {
-  //     onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
-  //       set({
-  //         position: [x / aspect, 0, y / aspect],
-  //       }),
-  //     // onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
-  //     //   altKey &&
-  //     //   set({
-  //     //     rotation: [y / aspect, x / aspect, 0],
-  //     //   }),
-  //   },
-  //   { eventOptions: { pointer: true } }
-  // );
 
   const model = useMemo(() => {
     if (nodes === undefined || materials === undefined) {
@@ -60,24 +46,50 @@ function Model({ url, position, ...props }) {
     return bind;
   }, [bind]);
 
-  // console.log({ bind });
-  console.log(newSpring);
+  const keys = Object.keys(model.nodes);
+
+  console.log(keys);
+  console.log(materials);
   return model ? (
-    <a.group
-      //position={model.position}
-      {...newBind()}
-      {...newSpring}
-      {...props}
-    >
-      {props.mesh.map((mesh) => (
-        <mesh
-          key={model.materials[mesh.material].uuid}
-          material={model.materials[mesh.material]}
-          geometry={model.nodes[mesh.geometry].geometry}
-        />
-      ))}
+    <a.group {...newBind()} {...newSpring} {...props}>
+      {keys.map((key) => {
+        if (model.nodes[key].type === "Mesh") {
+          return (
+            <mesh
+              key={model.nodes[key].uuid}
+              geometry={model.nodes[key].geometry}
+              material={model.nodes[key].material}
+            />
+          );
+        }
+        return null;
+      })}
     </a.group>
   ) : null;
 }
 
 export default Model;
+
+// const bind = useGesture(
+//   {
+//     onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+//       set({
+//         position: [x / aspect, 0, y / aspect],
+//       }),
+//     // onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+//     //   altKey &&
+//     //   set({
+//     //     rotation: [y / aspect, x / aspect, 0],
+//     //   }),
+//   },
+//   { eventOptions: { pointer: true } }
+// );
+
+/* {props.mesh.map((mesh) => (
+        <mesh
+          key={model.materials[mesh.material].uuid}
+          material={model.materials[mesh.material]}
+          geometry={model.nodes[mesh.geometry].geometry}
+        /> */
+
+// ))}

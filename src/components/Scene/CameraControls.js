@@ -7,7 +7,6 @@ extend({ OrbitControls });
 function CameraControls() {
   const {
     camera,
-    scene,
     gl: { domElement },
   } = useThree();
   const controls = useRef();
@@ -17,7 +16,6 @@ function CameraControls() {
   });
   useFrame((state) => {
     controls.current.update();
-    // console.log(scene);
   });
 
   return (
@@ -31,7 +29,7 @@ function CameraControls() {
       // screenSpacePanning={true}
       maxAzimuthAngle={0}
       minAzimuthAngle={0}
-      mouseButtons={{ LEFT: false, MIDDLE: 1, RIGHT: 0 }}
+      mouseButtons={{ LEFT: false, MIDDLE: false, RIGHT: 0 }}
       args={[camera, domElement]}
     />
   );
