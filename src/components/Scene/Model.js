@@ -48,8 +48,8 @@ function Model({ url, position, ...props }) {
 
   const keys = Object.keys(model.nodes);
 
-  console.log(keys);
-  console.log(materials);
+  // console.log("SCENE", scene);
+  // console.log("GL", gl);
   return model ? (
     <a.group {...newBind()} {...newSpring} {...props}>
       {keys.map((key) => {

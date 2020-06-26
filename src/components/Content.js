@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Icon, Menu, Segment, Sidebar, Button, Radio } from "semantic-ui-react";
 import { useDispatch } from "react-redux";
 import { changeLight } from "../store/scene/actions";
+import Render from "./Scene/Render";
 
 const Content = (props) => {
   const dispatch = useDispatch();
@@ -62,7 +63,7 @@ const Content = (props) => {
             <Button circular onClick={() => setVisible(!visible)}>
               Options
             </Button>
-            <Button circular>Render</Button>
+            {/* <Render /> */}
           </div>
           {props.content}
         </Segment>
