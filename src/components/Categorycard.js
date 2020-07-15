@@ -1,33 +1,74 @@
 import React from "react";
-import { Card, Button } from "semantic-ui-react";
+import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
 import { loadModels } from "../store/models/actions";
+import {
+  CardContent,
+  Card,
+  CardActionArea,
+  CardMedia,
+  Typography,
+  CardActions,
+  Button,
+} from "@material-ui/core";
 
-const Categorycard = ({ model, ...props }) => {
+const useStyles = makeStyles({
+  root: {
+    border: "1px solid #E6E6E6",
+    margin: "0.5em",
+    minWidth: 206,
+    maxWidth: 206,
+  },
+  typography: {
+    fontFamily: "Lato",
+    fontSize: "1.15em",
+  },
+  media: {
+    // margin: "auto",
+    // width: 100,
+    height: 250,
+  },
+  button: {
+    background: "#E0E1E2",
+    color: "black",
+    fontSize: "0.9em",
+    padding: "0.5em 1.2em",
+    borderRadius: "2em",
+    fontFamily: "Lato",
+    "&:hover": {
+      backgroundColor: "#CACBCD",
+    },
+  },
+});
+
+export default function Categorycard({ model, ...props }) {
   const dispatch = useDispatch();
-  console.log(model.thumbnail);
+  const classes = useStyles();
+
   return (
-    <Card style={{ margin: "0 1em", width: "15.5em", height: "25em" }}>
-      <div
-        style={{
-          height: "65%",
-          display: "flex",
-          justifyContent: "center",
-          background: "#e6e6e6",
-        }}
-      >
-        <img style={{ height: "100%" }} src={model.thumbnail} alt="" />
-      </div>
-      <Card.Content>
-        <Card.Header>{model.name}</Card.Header>
-      </Card.Content>
-      <Card.Content extra>
-        <Button circular onClick={(e) => dispatch(loadModels(model))}>
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia className={classes.media} image={model.thumbnail} title="" />
+
+        <CardContent>
+          <Typography
+            gutterBottom
+            className={classes.typography}
+            variant="h6"
+            component="h2"
+          >
+            {model.name}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button
+          className={classes.button}
+          onClick={(e) => dispatch(loadModels(model))}
+        >
           Select Model
         </Button>
-      </Card.Content>
+      </CardActions>
     </Card>
   );
-};
-
-export default Categorycard;
+}
