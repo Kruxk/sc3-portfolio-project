@@ -10,6 +10,7 @@ import {
   Typography,
   CardActions,
   Button,
+  CircularProgress,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
@@ -49,8 +50,15 @@ export default function Categorycard({ model, ...props }) {
   return (
     <Card className={classes.root}>
       <CardActionArea>
-        <CardMedia className={classes.media} image={model.thumbnail} title="" />
-
+        {model.thumbnail ? (
+          <CardMedia
+            className={classes.media}
+            image={model.thumbnail}
+            title=""
+          />
+        ) : (
+          <CircularProgress color="inherit" />
+        )}
         <CardContent>
           <Typography
             gutterBottom

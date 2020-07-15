@@ -14,6 +14,7 @@ import Background from "../components/Scene/Background";
 import Model from "../components/Scene/Model";
 import "./compose.css";
 import Menu from "../components/Menu";
+import { CircularProgress } from "@material-ui/core";
 
 function Compose() {
   const loadedModels = useSelector(selectLoadedModels);
@@ -65,7 +66,10 @@ function Compose() {
         <Suspense
           fallback={
             <HTML>
-              <div>Loading...</div>
+              <div style={{ color: "#4fb8a6" }}>
+                <CircularProgress color="inherit" />
+                Loading...
+              </div>
             </HTML>
           }
         >
