@@ -68,7 +68,9 @@ export default function Menu({
         onChange={(e) => dispatch(changeLight(e.target.value))}
       >
         {options.map((option, i) => (
-          <MenuItem value={option}>Lighting {i + 1}</MenuItem>
+          <MenuItem key={i} value={option}>
+            Lighting {i + 1}
+          </MenuItem>
         ))}
       </Select>
       <SaveButton handler={handleExport} />
