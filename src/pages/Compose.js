@@ -1,28 +1,28 @@
 import React, { Suspense, useState } from "react";
 import { useSelector } from "react-redux";
-import { selectPresets, selectActiveEnv } from "../store/scene/selectors";
+import { selectActiveEnv } from "../store/scene/selectors";
 import { HTML } from "drei";
 import { Canvas } from "react-three-fiber";
 import { Environment } from "../components/Scene/Environment";
 import { selectLoadedModels } from "../store/models/selectors";
 import * as THREE from "three";
 import LoadedModels from "../components/LoadedModels";
-import SaveButton from "../components/SaveButton";
 import CameraControls from "../components/Scene/CameraControls";
 import Camera from "../components/Scene/Camera";
 import Render from "../components/Scene/Render";
 import Background from "../components/Scene/Background";
 import Model from "../components/Scene/Model";
 import "./compose.css";
+import Menu from "../components/Menu";
 
 function Compose() {
-  const options = useSelector(selectPresets);
   const loadedModels = useSelector(selectLoadedModels);
   const activeEnv = useSelector(selectActiveEnv);
   const [exportScene, setExportScene] = useState(false);
+  const [intensity, setIntensity] = useState(1);
 
   return (
-    <div style={{ margin: "2em" }}>
+    <div style={{ padding: "2em", background: "#E6E6E6" }}>
       <div
         style={{
           display: "flex",
@@ -38,9 +38,11 @@ function Compose() {
           />
         ))}
       </div>
-      <div style={{ display: "flex", justifyContent: "flex-end" }}>
-        <SaveButton handler={setExportScene} />
-      </div>
+      <Menu
+        handleExport={setExportScene}
+        handleIntensity={setIntensity}
+        intensity={intensity}
+      />
       <Canvas
         onCreated={({ gl }) => {
           THREE.WebGLRenderer({ preserveDrawingBuffer: true, alpha: true });
@@ -67,8 +69,8 @@ function Compose() {
             </HTML>
           }
         >
-          {<Render control={setExportScene} trigger={exportScene} />}
-          <Environment url={activeEnv} intensity={3} />
+          <Render control={setExportScene} trigger={exportScene} />
+          <Environment url={activeEnv} intensity={intensity} />
           <Background />
           {loadedModels.map((model, i) => {
             return (

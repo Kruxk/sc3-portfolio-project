@@ -3,10 +3,11 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const style = {
-    fontSize: "1.35em",
+    fontSize: "1.2em",
     padding: "0.75em 2em",
     color: "#4fb8a6",
     fontFamily: "Lato, sans-serif",
+    textDecoration: "none",
   };
   const activeStyle = {
     fontWeight: "bold",
