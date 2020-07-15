@@ -12,7 +12,7 @@ function Library() {
   const loadedModels = useSelector(selectLoadedModels);
 
   return (
-    <div style={{ margin: "2em" }}>
+    <div style={{ padding: "2em", background: "#E6E6E6" }}>
       <div
         style={{
           display: "flex",

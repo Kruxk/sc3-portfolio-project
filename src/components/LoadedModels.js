@@ -9,7 +9,7 @@ import {
   CardActions,
   IconButton,
 } from "@material-ui/core";
-import DeleteIcon from "@material-ui/icons/Delete";
+import DeleteForeverTwoToneIcon from "@material-ui/icons/DeleteForeverTwoTone";
 
 const useStyles = makeStyles({
   root: {
@@ -42,7 +42,7 @@ export default function LoadedModels({ model, index, ...props }) {
           aria-label="delete"
           onClick={(e) => dispatch(removeModel(index))}
         >
-          <DeleteIcon />
+          <DeleteForeverTwoToneIcon />
         </IconButton>
       </CardActions>
     </Card>

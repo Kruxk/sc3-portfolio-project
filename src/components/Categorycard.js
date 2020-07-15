@@ -21,7 +21,8 @@ const useStyles = makeStyles({
   },
   typography: {
     fontFamily: "Lato",
-    fontSize: "1.15em",
+    fontSize: "1.35em",
+    color: "#4fb8a6",
   },
   media: {
     // margin: "auto",
@@ -30,7 +31,7 @@ const useStyles = makeStyles({
   },
   button: {
     background: "#E0E1E2",
-    color: "black",
+    color: "#4fb8a6",
     fontSize: "0.9em",
     padding: "0.5em 1.2em",
     borderRadius: "2em",
