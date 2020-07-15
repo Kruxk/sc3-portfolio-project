@@ -68,7 +68,7 @@ export default function Menu({
         onChange={(e) => dispatch(changeLight(e.target.value))}
       >
         {options.map((option, i) => (
-          <MenuItem key={i} value={option}>
+          <MenuItem key={i} value={option} className={classes.select}>
             Lighting {i + 1}
           </MenuItem>
         ))}
