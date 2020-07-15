@@ -1,43 +1,50 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { selectLoadedModels } from "../store/models/selectors";
-import { Image, Button } from "semantic-ui-react";
+import { useDispatch } from "react-redux";
 import { removeModel } from "../store/models/actions";
+import { makeStyles } from "@material-ui/core/styles";
+import {
+  Card,
+  CardActionArea,
+  CardMedia,
+  CardActions,
+  IconButton,
+} from "@material-ui/core";
+import DeleteIcon from "@material-ui/icons/Delete";
 
-export default function LoadedModels() {
-  const LoadedModels = useSelector(selectLoadedModels);
+const useStyles = makeStyles({
+  root: {
+    border: "1px solid #E6E6E6",
+    margin: "0.5em",
+    minWidth: 82.4,
+    maxWidth: 82.4,
+  },
+  media: {
+    // margin: "auto",
+    // width: 100,
+    height: 100,
+  },
+  actions: {
+    justifyContent: "center",
+  },
+});
+
+export default function LoadedModels({ model, index, ...props }) {
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   return (
-    <div
-      style={{
-        display: "flex",
-        padding: "1em",
-        marginTop: "1.5em",
-        marginBottom: "0",
-      }}
-    >
-      {LoadedModels.map((model, index) => {
-        return (
-          <div
-            style={{
-              margin: "0.5em",
-              border: "1px solid #E0E1E2",
-              paddingBottom: "0.25em",
-              //   textAlign: "center",
-              alignContent: "center",
-            }}
-          >
-            <Image
-              style={{ width: "100px", paddingBottom: "0.25em" }}
-              src={model.thumbnail}
-            />
-            <Button onClick={(e) => dispatch(removeModel(index))} circular>
-              Remove
-            </Button>
-          </div>
-        );
-      })}
-    </div>
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia className={classes.media} image={model.thumbnail} title="" />
+      </CardActionArea>
+      <CardActions className={classes.actions}>
+        <IconButton
+          aria-label="delete"
+          onClick={(e) => dispatch(removeModel(index))}
+        >
+          <DeleteIcon />
+        </IconButton>
+      </CardActions>
+    </Card>
   );
 }

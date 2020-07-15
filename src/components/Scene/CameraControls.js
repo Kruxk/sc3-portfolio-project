@@ -12,7 +12,6 @@ function CameraControls() {
   const controls = useRef();
   useEffect(() => {
     controls.current.polarAngle = 1.2718605108927004;
-    console.log(controls.current.keys);
   });
   useFrame((state) => {
     controls.current.update();

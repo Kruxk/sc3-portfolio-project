@@ -5,3 +5,5 @@ export const selectActiveEnv = (state) => {
 export const selectPresets = (state) => {
   return state.scene.environment.all;
 };
+
+export const selectExport = (state) => state.scene.export;

@@ -15,15 +15,35 @@ function Model({ url, position, ...props }) {
   }));
   const bind = useDrag(
     ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
-      !altKey
-        ? set({
-            position: [x / aspect, 0, y / aspect],
-          })
-        : set({
-            rotation: [y / aspect, x / aspect, 0],
-          }),
+      set({
+        position: [x / aspect, 0, y / aspect],
+      }),
     { eventOptions: { pointer: true } }
   );
+  // const bindHover = useHover(
+  //   ({ hovering }) =>
+  //     set({
+  //       rotation: hovering && [
+  //         spring.rotation[1] / aspect,
+  //         spring.rotation[0] / aspect,
+  //         0,
+  //       ],
+  //     }),
+  //   { eventOptions: { pointer: true } }
+  // );
+  // const bind = useGesture(
+  //   {
+  //     useDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
+  //       set({ position: [x / aspect, 0, y / aspect] }),
+  //     //onHover: ({ hovering }) => {
+  //     //if (hovering) {
+  //     //const y = spring.rotation[1];
+  //     // set({ rotation: [y + 0.01, y + 0.01, 0] });
+  //     //}
+  //     //},
+  //   },
+  //   { eventOptions: { pointer: true } }
+  // );
 
   const model = useMemo(() => {
     if (nodes === undefined || materials === undefined) {
@@ -45,6 +65,9 @@ function Model({ url, position, ...props }) {
   const newBind = useMemo(() => {
     return bind;
   }, [bind]);
+  // const newHover = useMemo(() => {
+  //   return bindHover;
+  // }, [bindHover]);
 
   const keys = Object.keys(model.nodes);
 

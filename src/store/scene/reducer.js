@@ -1,4 +1,4 @@
-import { CHANGE_LIGHTS } from "./actions";
+import { CHANGE_LIGHTS, EXPORT } from "./actions";
 
 const initialState = {
   environment: {
@@ -11,6 +11,7 @@ const initialState = {
     ],
     active: "/models/studio/studio010.hdr",
   },
+  export: false,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -19,6 +20,11 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         environment: { ...state.environment, active: payload },
+      };
+    case EXPORT:
+      return {
+        ...state,
+        export: payload,
       };
     default:
       return state;
