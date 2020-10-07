@@ -20,30 +20,6 @@ function Model({ url, position, ...props }) {
       }),
     { eventOptions: { pointer: true } }
   );
-  // const bindHover = useHover(
-  //   ({ hovering }) =>
-  //     set({
-  //       rotation: hovering && [
-  //         spring.rotation[1] / aspect,
-  //         spring.rotation[0] / aspect,
-  //         0,
-  //       ],
-  //     }),
-  //   { eventOptions: { pointer: true } }
-  // );
-  // const bind = useGesture(
-  //   {
-  //     useDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
-  //       set({ position: [x / aspect, 0, y / aspect] }),
-  //     //onHover: ({ hovering }) => {
-  //     //if (hovering) {
-  //     //const y = spring.rotation[1];
-  //     // set({ rotation: [y + 0.01, y + 0.01, 0] });
-  //     //}
-  //     //},
-  //   },
-  //   { eventOptions: { pointer: true } }
-  // );
 
   const model = useMemo(() => {
     if (nodes === undefined || materials === undefined) {
@@ -52,8 +28,6 @@ function Model({ url, position, ...props }) {
       const newModel = {
         nodes,
         materials,
-        //position: newPosition,
-        //bind,
       };
 
       return newModel;
@@ -65,14 +39,9 @@ function Model({ url, position, ...props }) {
   const newBind = useMemo(() => {
     return bind;
   }, [bind]);
-  // const newHover = useMemo(() => {
-  //   return bindHover;
-  // }, [bindHover]);
 
   const keys = Object.keys(model.nodes);
 
-  // console.log("SCENE", scene);
-  // console.log("GL", gl);
   return model ? (
     <a.group {...newBind()} {...newSpring} {...props}>
       {keys.map((key) => {
@@ -92,27 +61,3 @@ function Model({ url, position, ...props }) {
 }
 
 export default Model;
-
-// const bind = useGesture(
-//   {
-//     onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
-//       set({
-//         position: [x / aspect, 0, y / aspect],
-//       }),
-//     // onDrag: ({ offset: [x, y], vxvy: [vx, vy], down, altKey, ...props }) =>
-//     //   altKey &&
-//     //   set({
-//     //     rotation: [y / aspect, x / aspect, 0],
-//     //   }),
-//   },
-//   { eventOptions: { pointer: true } }
-// );
-
-/* {props.mesh.map((mesh) => (
-        <mesh
-          key={model.materials[mesh.material].uuid}
-          material={model.materials[mesh.material]}
-          geometry={model.nodes[mesh.geometry].geometry}
-        /> */
-
-// ))}
