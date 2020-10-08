@@ -3,7 +3,6 @@ export const EDIT_POSITION = "EDIT_POSITION";
 export const REMOVE_MODEL = "REMOVE_MODEL";
 
 export const loadModels = (model) => {
-  //   console.log(model);
   return { type: LOADED_MODELS, payload: model };
 };
 

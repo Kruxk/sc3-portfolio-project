@@ -5,6 +5,7 @@ import { HTML } from "drei";
 import { Canvas } from "react-three-fiber";
 import { Environment } from "../components/Scene/Environment";
 import { selectLoadedModels } from "../store/models/selectors";
+import { CircularProgress } from "@material-ui/core";
 import * as THREE from "three";
 import LoadedModels from "../components/LoadedModels";
 import CameraControls from "../components/Scene/CameraControls";
@@ -12,9 +13,8 @@ import Camera from "../components/Scene/Camera";
 import Render from "../components/Scene/Render";
 import Background from "../components/Scene/Background";
 import Model from "../components/Scene/Model";
-import "./compose.css";
 import Menu from "../components/Menu";
-import { CircularProgress } from "@material-ui/core";
+import "./compose.css";
 
 function Compose() {
   const loadedModels = useSelector(selectLoadedModels);
@@ -55,9 +55,6 @@ function Compose() {
           });
         }}
       >
-        {/* <ambientLight intensity={1.14} /> */}
-        {/* <pointLight position={[0, 5, 0]} /> */}
-
         <CameraControls />
         <Camera
           position={[0, 0.04928419090198964, 0.852950845625365]}

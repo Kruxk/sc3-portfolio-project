@@ -1,6 +1,6 @@
 # SC3D
 
-[See the deployed site here](https://nifty-shirley-604860.netlify.app/)
+# See the deployed site here(https://nifty-shirley-604860.netlify.app/)
 
 ## Table of contents
 

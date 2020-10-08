@@ -23,9 +23,7 @@ function CameraControls() {
       maxPolarAngle={Math.PI / 2}
       maxDistance={0.852950845625365}
       minDistance={0.3754064142089866}
-      //polarAngle={1.2718605108927004}
       enablePan={true}
-      // screenSpacePanning={true}
       maxAzimuthAngle={0}
       minAzimuthAngle={0}
       mouseButtons={{ LEFT: false, MIDDLE: false, RIGHT: 0 }}
