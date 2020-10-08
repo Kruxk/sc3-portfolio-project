@@ -45,9 +45,6 @@ function Navbar() {
       <NavLink to="/library" style={style} activeStyle={activeStyle}>
         Library
       </NavLink>
-      {/* <NavLink to="/texturing" style={style} activeStyle={activeStyle}>
-        Texturing
-      </NavLink> */}
       <NavLink to="/compose" style={style} activeStyle={activeStyle}>
         Compose
       </NavLink>
