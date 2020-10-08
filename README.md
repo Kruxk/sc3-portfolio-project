@@ -4,11 +4,21 @@
 
 ## Table of contents
 
+- [Gif](#gif)
+- [How i did it](#how i did it)
 - [About](#about)
 - [Learned](#learned)
 - [Technologies](#technologies)
 - [Project User Stories and Wireframe](#project-user-stories-and-wireframe)
 - [Available Scripts](#available-scripts)
+
+### Gif
+
+![](Peek 2020-10-08 10-24.gif)
+
+### How i did it
+
+See code example here(https://github.com/Kruxk/sc3-portfolio-project/blob/development/src/pages/Compose.js)
 
 ### About
 
