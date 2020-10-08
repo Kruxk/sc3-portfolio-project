@@ -5,7 +5,7 @@
 ## Table of contents
 
 - [Gif](#gif)
-- [How i did it](#how i did it)
+- [How_i_did_it](#how_i_did_it)
 - [About](#about)
 - [Learned](#learned)
 - [Technologies](#technologies)
@@ -14,11 +14,11 @@
 
 ### Gif
 
-![](Peek 2020-10-08 10-24.gif)
+![](https://github.com/Kruxk/sc3-portfolio-project/blob/development/Peek%202020-10-08%2010-24.gif)
 
-### How i did it
+### How_i_did_it
 
-See code example here(https://github.com/Kruxk/sc3-portfolio-project/blob/development/src/pages/Compose.js)
+#See code example here(https://github.com/Kruxk/sc3-portfolio-project/blob/development/src/pages/Compose.js)
 
 ### About
 
