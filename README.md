@@ -1,6 +1,6 @@
 # SC3D
 
-# See the deployed site here(https://nifty-shirley-604860.netlify.app/)
+# [See the deployed site here](https://nifty-shirley-604860.netlify.app/)
 
 ## Table of contents
 
@@ -18,7 +18,7 @@
 
 ### How_i_did_it
 
-#See code example here(https://github.com/Kruxk/sc3-portfolio-project/blob/development/src/pages/Compose.js)
+[See code example here](https://github.com/Kruxk/sc3-portfolio-project/blob/development/src/pages/Compose.js)
 
 ### About
 
